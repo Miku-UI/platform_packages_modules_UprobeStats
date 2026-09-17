@@ -1,0 +1,63 @@
+package: "android.uprobestats.mainline.flags"
+container: "com.android.uprobestats"
+
+# DO NOT ADD FLAGS HERE.
+# Flags should be added to uprobestats-flags.aconfig, so that we can eventually
+# drop the "mainline" part of the flag package, which is a relic from when
+# there was both a mainline and non-mainline version of UprobeStats.
+# LINT.IfChange
+# keep-sorted start block=yes newline_separated=yes
+flag {
+   name: "dynamic_instrumentation_event_service"
+   namespace: "responsible_apis"
+   description: "Guards the UprobeStatsEventService API."
+   bug: "412739902"
+   is_exported: true
+}
+
+flag {
+    name: "enable_binder_transaction"
+    namespace: "responsible_apis"
+    description: "Whether to enable the binder transaction instrumentation"
+    bug: "427180586"
+}
+
+flag {
+    name: "enable_bitmap_instrumentation"
+    namespace: "system_performance"
+    description: "Whether to enable bitmap instrumentation"
+    bug: "400457896"
+    is_fixed_read_only: true
+}
+
+flag {
+    name: "enable_bitmap_scaled_instrumentation"
+    namespace: "system_performance"
+    description: "Whether to instrument bitmap scaling events."
+    bug: "408255571"
+}
+
+flag {
+    name: "enable_bitmap_snapshot"
+    namespace: "system_performance"
+    description: "Whether to enable bitmap snapshot"
+    bug: "400457896"
+    is_fixed_read_only: true
+}
+
+flag {
+    name: "uprobestats_monitor_disruptive_app_activities"
+    namespace: "responsible_apis"
+    description: "Whether to enable uprobestats support of monitoring disruptive app activities"
+    bug: "395129335"
+    is_fixed_read_only: true
+}
+
+flag {
+    name: "use_process_observer_api"
+    namespace: "system_performance"
+    description: "Whether to use the ProcessObserver API to monitor process start events."
+    bug: "408255571"
+}
+# keep-sorted end
+# LINT.ThenChange(packages/modules/UprobeStats/flags/uprobestats-flags.aconfig)

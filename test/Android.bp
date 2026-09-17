@@ -1,0 +1,69 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+    default_team: "trendy_team_system_performance",
+}
+
+java_library_host {
+    name: "uprobestats-test-rule",
+    srcs: ["src/UprobeStatsTestRule.java"],
+    libs: ["tradefed"],
+    static_libs: [
+        "cts-statsd-atom-host-test-utils",
+        "uprobestats-protos",
+    ],
+}
+
+java_defaults {
+    name: "uprobestats-test-defaults",
+    libs: [
+        "tradefed",
+        "truth",
+    ],
+    static_libs: ["uprobestats-test-rule"],
+    java_resource_dirs: ["res"],
+}
+
+java_test_host {
+    name: "uprobestats-test",
+    defaults: ["uprobestats-test-defaults"],
+    srcs: [
+        "src/UprobeStatsTest.java",
+    ],
+    libs: ["compatibility-host-util"],
+    static_libs: [
+        "flag-junit-host",
+        "art_flags_uprobestats_java_lib",
+        "uprobestats_mainline_flags_java_lib_test_host",
+    ],
+    test_suites: [
+        "general-tests",
+        "mts-uprobestats",
+    ],
+    device_common_data: [
+        ":DisruptiveTestApp",
+        ":BitmapTestApp",
+        ":UprobeStatsTestApk",
+    ],
+}
+
+java_test_host {
+    name: "uprobestats-art-test",
+    defaults: ["uprobestats-test-defaults"],
+    srcs: ["src/ArtTest.java"],
+    libs: ["compatibility-host-util"],
+    static_libs: [
+        "flag-junit-host",
+        "art-aconfig-rw-flags-java-lib-test",
+    ],
+    test_suites: ["general-tests"],
+    device_common_data: [":DisruptiveTestApp"],
+    test_config: "AndroidTestArt.xml",
+}
+
+java_test_host {
+    name: "uprobestats-manual-test",
+    defaults: ["uprobestats-test-defaults"],
+    srcs: ["src/UprobeStatsManualTest.java"],
+    test_suites: ["general-tests"],
+    test_config: "AndroidTestManual.xml",
+}

@@ -1,0 +1,46 @@
+{
+    "presubmit": [
+        {
+            "name": "CtsUprobeStatsTest"
+        },
+        {
+            "name": "uprobestats-test"
+        },
+        {
+            "name": "uprobestats-art-test"
+        },
+        {
+            "name": "uprobestats-core-test"
+        },
+        {
+            "name": "CtsPerfAtomHostTestCases",
+            "options": [
+                {
+                    "include-filter": "android.cts.statsdatom.perf.UprobeStatsTest"
+                }
+            ]
+        }
+    ],
+    "uprobestats-mainline-presubmit": [
+        {
+            "name": "CtsUprobeStatsTest"
+        },
+        {
+            "name": "uprobestats-test"
+        },
+        {
+            "name": "uprobestats-art-test"
+        },
+        {
+            "name": "uprobestats-core-test"
+        },
+        {
+            "name": "CtsPerfAtomHostTestCases",
+            "options": [
+                {
+                    "include-filter": "android.cts.statsdatom.perf.UprobeStatsTest"
+                }
+            ]
+        }
+    ]
+}

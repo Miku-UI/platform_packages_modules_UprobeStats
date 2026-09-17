@@ -1,0 +1,9 @@
+rust_library {
+    name: "libuprobestats_c_string",
+    crate_name: "uprobestats_c_string",
+    defaults: [
+        "uprobestats_apex_defaults",
+        "uprobestats_core_rustlibs_defaults",
+    ],
+    srcs: ["c_string.rs"],
+}

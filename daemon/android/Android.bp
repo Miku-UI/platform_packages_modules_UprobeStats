@@ -1,0 +1,27 @@
+rust_library {
+    name: "libuprobestats_android",
+    crate_name: "uprobestats_android",
+    defaults: [
+        "uprobestats_apex_defaults",
+        "uprobestats_core_rustlibs_defaults",
+        "uprobestats_features_defaults",
+        "uprobestats_flags_rustlibs_defaults",
+        "uprobestats_proto_rustlibs_defaults",
+    ],
+    srcs: ["uprobestats_android.rs"],
+    rustlibs: [
+        "libactivity_manager_rs",
+        "libbinder_rs",
+        "libdynamic_instrumentation_manager",
+        "librand",
+        "librustutils",
+        "libstatslog_uprobestats_rs",
+        "libstatssocket_rs",
+        "libuprobestats_bpf",
+        "libuprobestats_bpf_bindgen",
+        "libuprobestats_core",
+        "libzerocopy",
+        "uprobestats-bridge-service-aidl-rust",
+        "uprobestats-service-aidl-rust",
+    ],
+}

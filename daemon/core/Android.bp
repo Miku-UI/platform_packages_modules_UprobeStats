@@ -1,0 +1,38 @@
+rust_defaults {
+    name: "uprobestats_core_defaults",
+    defaults: [
+        "uprobestats_apex_defaults",
+        "uprobestats_core_rustlibs_defaults",
+        "uprobestats_features_defaults",
+        "uprobestats_flags_rustlibs_defaults",
+        "uprobestats_proto_rustlibs_defaults",
+    ],
+    srcs: ["uprobestats_core.rs"],
+    rustlibs: [
+        "libbinder_rs",
+        "libuprobestats_bpf_structs",
+        "libzerocopy",
+        "uprobestats-bridge-service-aidl-rust",
+        "liblibc",
+        "librand",
+    ],
+}
+
+rust_library {
+    name: "libuprobestats_core",
+    crate_name: "uprobestats_core",
+    defaults: ["uprobestats_core_defaults"],
+    rustlibs: [
+        "liblibc",
+    ],
+}
+
+rust_test_host {
+    name: "uprobestats-core-test",
+    defaults: ["uprobestats_core_defaults"],
+    rustlibs: ["libmockall"],
+    test_suites: [
+        "general-tests",
+        "mts-uprobestats",
+    ],
+}

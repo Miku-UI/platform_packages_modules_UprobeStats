@@ -1,0 +1,10 @@
+// Signature format: 6.0
+// - style=java
+package android.service.uprobestats {
+
+  @FlaggedApi("android.uprobestats.mainline.flags.dynamic_instrumentation_event_service") public class UprobestatsFrameworkInitializer {
+    method public static void registerServiceWrappers();
+  }
+
+}
+
